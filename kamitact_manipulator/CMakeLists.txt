@@ -102,9 +102,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES kamitact_manipulator
-#  CATKIN_DEPENDS roscpp rospy
+  INCLUDE_DIRS include
+  LIBRARIES kamitact_manipulator
+  CATKIN_DEPENDS roscpp rospy
 #  DEPENDS system_lib
 )
 
@@ -115,7 +115,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -205,11 +205,11 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-add_executable(${PROJECT_NAME}_controller_node
-    src/controller.cpp
+add_library(${PROJECT_NAME}_node
+    src/kamitact_manipulator.cpp
+    src/common.cpp
     )
 
-
-target_link_libraries(${PROJECT_NAME}_controller_node
-   ${catkin_LIBRARIES}
-   )   
+target_link_libraries(${PROJECT_NAME}_node
+    ${catkin_LIBRARIES}
+)
